@@ -1,12 +1,13 @@
 package cn.lilq.cloudnetflix.cloudapicom.pojo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * @auther: Li Liangquan
  * @date: 2020/11/3 23:09
  */
-public class Book {
+public class Book implements Serializable {
     private String id;
     private String name;
     private String category;//类别

@@ -39,7 +39,7 @@ public class PersonCon {
      * @return list
      */
     @ResponseBody
-    @RequestMapping(value="/v1/person", method= RequestMethod.GET)
+    @RequestMapping(value="/", method= RequestMethod.GET)
     @HystrixCommand
     public Response list() {
         log.debug("asdadasd");
@@ -53,7 +53,7 @@ public class PersonCon {
      * @return 存在返回person 否则返回code400
      */
     @ResponseBody
-    @RequestMapping(value="/v1/person/{id}", method= RequestMethod.GET)
+    @RequestMapping(value="/{id}", method= RequestMethod.GET)
     @HystrixCommand
     public Response getPerson(@PathVariable String id) {
         return personService.findPersonById(new Person(id,null,null,null));
@@ -65,7 +65,7 @@ public class PersonCon {
      * @return 存在返回Permissions 否则返回code400
      */
     @ResponseBody
-    @RequestMapping(value="/v1/person/{id}/permissions", method= RequestMethod.GET)
+    @RequestMapping(value="/{id}/permissions", method= RequestMethod.GET)
     @HystrixCommand
     public Response findPersonPermissions(@PathVariable String id) {
         return personService.getPersonPermissions(new Person(id,null,null,null));
@@ -77,7 +77,7 @@ public class PersonCon {
      * @return 成功返回提交后的person 否则code400
      */
     @ResponseBody
-    @RequestMapping(value = "/v1/person",method = RequestMethod.POST)
+    @RequestMapping(value = "/",method = RequestMethod.POST)
     @HystrixCommand
     public Response addPerson(@RequestBody Person person){
         return personService.addPerson(person);
@@ -89,7 +89,7 @@ public class PersonCon {
      * @return 成功返回提交后的person 否则code400
      */
     @ResponseBody
-    @RequestMapping(value = "/v1/person",method = RequestMethod.PUT)
+    @RequestMapping(value = "/",method = RequestMethod.PUT)
     @HystrixCommand
     public Response updatePerson(@RequestBody Person person){
         return personService.updatePerson(person);
