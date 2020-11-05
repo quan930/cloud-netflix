@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * @auther: Li Liangquan
  * @date: 2020/11/5 08:01
+ * 订单服务
  */
 
 @SpringBootApplication

@@ -1,3 +1,4 @@
 .idea/
 **/target
 *.iml
+cloud-shop-server/
