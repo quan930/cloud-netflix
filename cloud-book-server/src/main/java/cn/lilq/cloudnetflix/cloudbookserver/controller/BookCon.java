@@ -44,7 +44,7 @@ public class BookCon {
     @ResponseBody
     @RequestMapping(value="/", method= RequestMethod.GET)
     @HystrixCommand
-    public Response list() {
+    public Response bookList() {
         return bookService.listBook();
     }
 

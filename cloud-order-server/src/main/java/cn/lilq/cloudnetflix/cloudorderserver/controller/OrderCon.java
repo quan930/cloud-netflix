@@ -23,7 +23,7 @@ import javax.annotation.Resource;
                 @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000"),
         },
         //指定线程池名称
-        threadPoolKey = "bookThreadPool",
+        threadPoolKey = "orderThreadPool",
         threadPoolProperties = {
                 //设置线程池中线程数
                 @HystrixProperty(name = "coreSize",value = "50"),
@@ -41,7 +41,7 @@ public class OrderCon {
     @ResponseBody
     @RequestMapping(value="/", method= RequestMethod.GET)
     @HystrixCommand
-    public Response list() {
+    public Response orderList() {
         return orderService.listOrder();
     }
 

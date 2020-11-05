@@ -41,7 +41,7 @@ public class PersonCon {
     @ResponseBody
     @RequestMapping(value="/", method= RequestMethod.GET)
     @HystrixCommand
-    public Response list() {
+    public Response personList() {
         log.debug("asdadasd");
         System.out.println(personService.listPerson());
         return personService.listPerson();

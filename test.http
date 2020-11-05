@@ -22,7 +22,7 @@ POST http://localhost/api/v1/person
 Content-Type: application/json
 
 {
-  "name": "tom3",
+  "name": "tom4",
   "password": "111111",
   "permissions": 1
 }
@@ -55,7 +55,7 @@ POST http://localhost/api/v1/book
 Content-Type: application/json
 
 {
-  "name": "Thinking in JAVA",
+  "name": "Core JAVA",
   "category": "JAVA",
   "repertory": 20
 }
@@ -66,20 +66,20 @@ PUT http://localhost/api/v1/book
 Content-Type: application/json
 
 {
-  "id": "4028ab157592067d0175921687ab0000",
-  "name": "Spring in Action",
+  "id": "4028ab1575961aa4017596292cc30000",
+  "name": "Core JAVA",
   "category": "JAVA",
-  "repertory": 11
+  "repertory": 18
 }
 
 
 ### 修改书籍库存
-POST http://localhost/api/v1/book/shop
+POST http://localhost/api/v1/book/repertory
 Content-Type: application/json
 
 {
-  "id": "4028ab157592067d0175921687ab0000",
-  "repertory": -2
+  "id": "4028ab1575961aa4017596292cc30000",
+  "repertory": 3
 }
 
 
@@ -111,5 +111,5 @@ Content-Type: application/json
   "id": "4028ab157595edc2017596046fd50000",
   "userId": "4028ab157592067d0175921687ab0000",
   "goodsId": "4028ab15757d90cf01757d9456bb0000",
-  "date": "2020-11-05T01:30:54.000+00:00"
+  "date": "2020-11-05T02:30:54.000+00:00"
 }
