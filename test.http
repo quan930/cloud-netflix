@@ -113,3 +113,13 @@ Content-Type: application/json
   "goodsId": "4028ab15757d90cf01757d9456bb0000",
   "date": "2020-11-05T02:30:54.000+00:00"
 }
+
+
+### 商店服务
+POST http://127.0.0.1/api/v1/shop
+Content-Type: application/json
+
+{
+  "goodsId":"4028ab1575961aa4017596292cc30000",
+  "userId":"4028ab157568873f01756898bd460000"
+}

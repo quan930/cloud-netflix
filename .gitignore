@@ -1,4 +1,4 @@
 .idea/
 **/target
 *.iml
-cloud-shop-server/
+**/.DS_Store
