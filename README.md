@@ -1,6 +1,38 @@
-# cloud-netflix 
-### `书城API`
+# netflix系微服务-书城 
+### 技术栈
++ eureka
++ zuul
++ spring-cloud-config
++ spring-cloud-stream
++ RabbitMQ
++ hystrix
++ spring-data-jpa
++ hystrix-dashboard
++ turbine
++ ribbon
 
+### 项目目录
+#### 公共包
++ [cloud-api-com](https://github.com/quan930/cloud-netflix/tree/main/cloud-api-com)
+#### 基本配置
++ [cloud-config](https://github.com/quan930/cloud-netflix/tree/main/cloud-config)
++ [cloud-eureka-server](https://github.com/quan930/cloud-netflix/tree/main/cloud-eureka-server)
++ [cloud-hystrix-dashboard](https://github.com/quan930/cloud-netflix/tree/main/cloud-hystrix-dashboard)
++ [cloud-turbine-service](https://github.com/quan930/cloud-netflix/tree/main/cloud-turbine-service)
++ [cloud-zuul](https://github.com/quan930/cloud-netflix/tree/main/cloud-zuul)
+
+#### 服务
++ [cloud-person-server](https://github.com/quan930/cloud-netflix/tree/main/cloud-person-server)
++ [cloud-book-server](https://github.com/quan930/cloud-netflix/tree/main/cloud-book-server)
++ [cloud-order-server](https://github.com/quan930/cloud-netflix/tree/main/cloud-order-server)
++ [cloud-shop-server](https://github.com/quan930/cloud-netflix/tree/main/cloud-shop-server)
+
+#### test
++ [cloud-test](https://github.com/quan930/cloud-netflix/tree/main/cloud-test)
+
+
+
+### `书城API`
 #### 用户服务
 + 查询全部用户
     ```http request
