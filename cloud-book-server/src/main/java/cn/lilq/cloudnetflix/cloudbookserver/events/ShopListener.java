@@ -3,6 +3,7 @@ package cn.lilq.cloudnetflix.cloudbookserver.events;
 import cn.lilq.cloudnetflix.cloudapicom.pojo.Book;
 import cn.lilq.cloudnetflix.cloudapicom.pojo.Order;
 import cn.lilq.cloudnetflix.cloudbookserver.service.BookService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
  * shop消息订阅者回调函数 处理书籍 库存
  */
 
+@Slf4j
 @Component
 public class ShopListener {
     @Resource
@@ -27,7 +29,7 @@ public class ShopListener {
 
     @StreamListener(Sink.INPUT)
     public void receive(Order order){
-        logger.debug("order{}"+"userID"+order.getUserId()+"Goods ID"+order.getGoodsId());
+        log.debug("ShopListener:receive("+order+")");
         bookService.updateBookRepertory(new Book(order.getGoodsId(), null,null,-1));
     }
 }

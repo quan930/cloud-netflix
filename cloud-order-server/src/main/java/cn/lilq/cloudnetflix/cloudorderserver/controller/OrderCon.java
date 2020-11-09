@@ -6,6 +6,7 @@ import cn.lilq.cloudnetflix.cloudorderserver.service.OrderService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,8 @@ import javax.annotation.Resource;
  * @date: 2020/11/5 08:17
  * order controller
  */
+
+@Slf4j
 @Controller
 @DefaultProperties(defaultFallback = "fallback",
         commandProperties = {
@@ -42,6 +45,7 @@ public class OrderCon {
     @RequestMapping(value="/", method= RequestMethod.GET)
     @HystrixCommand
     public Response orderList() {
+        log.debug("OrderCon:orderList()");
         return orderService.listOrder();
     }
 
@@ -54,6 +58,7 @@ public class OrderCon {
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
     @HystrixCommand
     public Response getOrder(@PathVariable String id) {
+        log.debug("OrderCon:getOrder("+id+")");
         return orderService.findOrderById(new Order(id,null,null,null));
     }
 
@@ -67,6 +72,7 @@ public class OrderCon {
     @RequestMapping(value = "/",method = RequestMethod.POST)
     @HystrixCommand
     public Response addOrder(@RequestBody Order order){
+        log.debug("OrderCon:addOrder("+order+")");
         return orderService.addOrder(order);
     }
 
@@ -79,6 +85,7 @@ public class OrderCon {
     @RequestMapping(value = "/",method = RequestMethod.PUT)
     @HystrixCommand
     public Response updateOrder(@RequestBody Order order){
+        log.debug("OrderCon:updateOrder("+order+")");
         return orderService.updateOrder(order);
     }
 
@@ -87,6 +94,7 @@ public class OrderCon {
      * @return response
      */
     public Response fallback(){
+        log.debug("OrderCon:fallback()");
         return new Response(500,"server error",null);
     }
 

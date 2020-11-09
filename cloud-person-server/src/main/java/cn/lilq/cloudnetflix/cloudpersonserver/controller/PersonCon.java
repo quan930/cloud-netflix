@@ -42,8 +42,7 @@ public class PersonCon {
     @RequestMapping(value="/", method= RequestMethod.GET)
     @HystrixCommand
     public Response personList() {
-        log.debug("asdadasd");
-        System.out.println(personService.listPerson());
+        log.debug("PersonCon:personList()");
         return personService.listPerson();
     }
 
@@ -56,6 +55,7 @@ public class PersonCon {
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
     @HystrixCommand
     public Response getPerson(@PathVariable String id) {
+        log.debug("PersonCon:getPerson("+id+")");
         return personService.findPersonById(new Person(id,null,null,null));
     }
 
@@ -68,6 +68,7 @@ public class PersonCon {
     @RequestMapping(value="/{id}/permissions", method= RequestMethod.GET)
     @HystrixCommand
     public Response findPersonPermissions(@PathVariable String id) {
+        log.debug("PersonCon:findPersonPermissions("+id+")");
         return personService.getPersonPermissions(new Person(id,null,null,null));
     }
 
@@ -80,6 +81,7 @@ public class PersonCon {
     @RequestMapping(value = "/",method = RequestMethod.POST)
     @HystrixCommand
     public Response addPerson(@RequestBody Person person){
+        log.debug("PersonCon:addPerson("+person+")");
         return personService.addPerson(person);
     }
 
@@ -92,10 +94,12 @@ public class PersonCon {
     @RequestMapping(value = "/",method = RequestMethod.PUT)
     @HystrixCommand
     public Response updatePerson(@RequestBody Person person){
+        log.debug("PersonCon:updatePerson("+person+")");
         return personService.updatePerson(person);
     }
 
     public Response fallback(){
+        log.debug("PersonCon:fallback()");
         return new Response(500,"server error",null);
     }
 }
