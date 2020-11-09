@@ -1,3 +1,6 @@
+![](https://img.shields.io/badge/release-1.0--SNAPSHOT-blue)
+![](https://img.shields.io/badge/Spring%20Boot%20Version-2.3.0.RELEASE-brightgreen)
+![](https://img.shields.io/badge/Spring%20Cloud%20Version-Hoxton.SR8-brightgreen)
 # netflix系微服务-书城 
 ### 技术栈
 + eureka
@@ -10,6 +13,8 @@
 + hystrix-dashboard
 + turbine
 + ribbon
++ spring cloud sleuth
++ Zipkin
 
 ### 项目目录
 #### 公共包
@@ -160,3 +165,20 @@
       "userId":"4028ab157568873f01756898bd460000"
     }
     ```
+
+### 其他
++ 服务监控 仪表盘
+    ```http request
+    http://localhost:9001/hystrix
+    ```
++ 监控聚合
+    ```http request
+    http://localhost:9002/turbine.stream
+    ```
++ 分布式跟踪
+    ```http request
+    http://localhost:9411/zipkin
+    ```
++ 展示图片
+
+    [show](https://github.com/quan930/cloud-netflix/tree/main/showtime)
