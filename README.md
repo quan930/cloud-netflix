@@ -167,6 +167,11 @@
     ```
 
 ### 其他
++ 注册中心
+    ```http request
+    http://localhost:7001/
+    http://localhost:7002/
+    ```
 + 服务监控 仪表盘
     ```http request
     http://localhost:9001/hystrix
