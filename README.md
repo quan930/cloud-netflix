@@ -1,6 +1,7 @@
 ![](https://img.shields.io/badge/release-1.0--SNAPSHOT-blue)
 ![](https://img.shields.io/badge/Spring%20Boot%20Version-2.3.0.RELEASE-brightgreen)
 ![](https://img.shields.io/badge/Spring%20Cloud%20Version-Hoxton.SR8-brightgreen)
+![](https://img.shields.io/github/last-commit/quan930/cloud-netflix)
 # netflix系微服务-书城 
 ### 技术栈
 + eureka
