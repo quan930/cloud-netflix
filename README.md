@@ -1,7 +1,7 @@
-![](https://img.shields.io/badge/release-1.0--SNAPSHOT-blue)
-![](https://img.shields.io/badge/Spring%20Boot%20Version-2.3.0.RELEASE-brightgreen)
-![](https://img.shields.io/badge/Spring%20Cloud%20Version-Hoxton.SR8-brightgreen)
-![](https://img.shields.io/github/last-commit/quan930/cloud-netflix)
+![release:1.0--SNAPSHOT](https://img.shields.io/badge/release-1.0--SNAPSHOT-blue)
+![Spring Boot Version:2.3.0.RELEASE](https://img.shields.io/badge/Spring%20Boot%20Version-2.3.0.RELEASE-brightgreen)
+![Spring Cloud Version:Hoxton.SR8](https://img.shields.io/badge/Spring%20Cloud%20Version-Hoxton.SR8-brightgreen)
+![last-commit](https://img.shields.io/github/last-commit/quan930/cloud-netflix)
 # netflix系微服务-书城 
 ### 技术栈
 + eureka
@@ -166,7 +166,6 @@
       "userId":"4028ab157568873f01756898bd460000"
     }
     ```
-
 ### 其他
 + 注册中心
     ```http request
