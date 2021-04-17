@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 public class CloudPersonServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CloudPersonServerApplication.class,args);
+        SpringApplication.run(CloudPersonServerApplication.class, args);
     }
 
     @Bean

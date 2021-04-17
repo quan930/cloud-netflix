@@ -10,19 +10,21 @@ import cn.lilq.cloudnetflix.cloudapicom.pojo.Book;
 public class BookTransformUtil {
     /**
      * 数据库对象转pojo对象
+     *
      * @param book entity book
      * @return pojo book
      */
-    public static Book entityToPojo(cn.lilq.cloudnetflix.cloudbookserver.entity.Book book){
+    public static Book entityToPojo(cn.lilq.cloudnetflix.cloudbookserver.entity.Book book) {
         return new Book(book.getId(), book.getName(), book.getCategory(), book.getRepertory());
     }
 
     /**
      * pojo对象转数据库对象
+     *
      * @param book pojo book
      * @return entity book
      */
-    public static cn.lilq.cloudnetflix.cloudbookserver.entity.Book pojoToEntity(Book book){
+    public static cn.lilq.cloudnetflix.cloudbookserver.entity.Book pojoToEntity(Book book) {
         return new cn.lilq.cloudnetflix.cloudbookserver.entity.Book(book.getId(), book.getName(), book.getCategory(), book.getRepertory());
     }
 }

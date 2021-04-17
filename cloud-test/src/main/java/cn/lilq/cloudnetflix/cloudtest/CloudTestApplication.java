@@ -20,6 +20,6 @@ import org.springframework.cloud.stream.messaging.Sink;
 @SpringBootApplication
 public class CloudTestApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CloudTestApplication.class,args);
+        SpringApplication.run(CloudTestApplication.class, args);
     }
 }

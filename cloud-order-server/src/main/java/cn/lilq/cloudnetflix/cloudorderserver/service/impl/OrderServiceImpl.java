@@ -32,17 +32,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response addOrder(Order order) {
-        if (order.getId()!=null)
-            return new Response(400,"Id must be null",null);
-        if (order.getGoodsId()==null || order.getUserId()==null)
-            return new Response(400,"content is null",null);
-        if (order.getDate()==null)
+        if (order.getId() != null)
+            return new Response(400, "Id must be null", null);
+        if (order.getGoodsId() == null || order.getUserId() == null)
+            return new Response(400, "content is null", null);
+        if (order.getDate() == null)
             order.setDate(new Date());
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("orderDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
-            return new Response(200,"successful",OrderTransformUtil.entityToPojo(orderDAO.save(OrderTransformUtil.pojoToEntity(order))));
-        }finally {
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
+            return new Response(200, "successful", OrderTransformUtil.entityToPojo(orderDAO.save(OrderTransformUtil.pojoToEntity(order))));
+        } finally {
             newSpan.finish();
             log.debug("OrderService:addOrder()");
         }
@@ -52,14 +52,14 @@ public class OrderServiceImpl implements OrderService {
     public Response listOrder() {
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("orderDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             List<cn.lilq.cloudnetflix.cloudapicom.pojo.Order> ordersNew = new ArrayList<>();
             List<cn.lilq.cloudnetflix.cloudorderserver.entity.Order> orders = orderDAO.findAll();
             orders.forEach(order ->
                     ordersNew.add(OrderTransformUtil.entityToPojo(order))
             );
-            return new Response(200,"successful",ordersNew);
-        }finally {
+            return new Response(200, "successful", ordersNew);
+        } finally {
             newSpan.finish();
             log.debug("OrderService:listOrder()");
         }
@@ -67,16 +67,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response findOrderById(Order order) {
-        if(order.getId()==null)
-            return new Response(400,"id is null",null);
+        if (order.getId() == null)
+            return new Response(400, "id is null", null);
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("orderDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             return orderDAO.findById(order.getId())
                     .map(value ->
-                            new Response(200,"successful", OrderTransformUtil.entityToPojo(value))
+                            new Response(200, "successful", OrderTransformUtil.entityToPojo(value))
                     ).orElseGet(() -> new Response(404, "order is not exist", null));
-        }finally {
+        } finally {
             newSpan.finish();
             log.debug("OrderService:findOrderById()");
         }
@@ -84,14 +84,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response updateOrder(Order order) {
-        if (order.getId()==null || order.getUserId()==null || order.getDate()==null || order.getGoodsId()==null){
-            return new Response(400,"content is null",null);
+        if (order.getId() == null || order.getUserId() == null || order.getDate() == null || order.getGoodsId() == null) {
+            return new Response(400, "content is null", null);
         }
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("orderDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
-            return new Response(200,"successful",OrderTransformUtil.entityToPojo(orderDAO.save(OrderTransformUtil.pojoToEntity(order))));
-        }finally {
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
+            return new Response(200, "successful", OrderTransformUtil.entityToPojo(orderDAO.save(OrderTransformUtil.pojoToEntity(order))));
+        } finally {
             newSpan.finish();
             log.debug("OrderService:updateOrder()");
         }

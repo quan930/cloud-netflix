@@ -11,6 +11,7 @@ import cn.lilq.cloudnetflix.cloudapicom.pojo.Response;
 public interface ShopService {
     /**
      * 发布订单消息
+     *
      * @param order 订单
      */
     Response sendShop(Order order);

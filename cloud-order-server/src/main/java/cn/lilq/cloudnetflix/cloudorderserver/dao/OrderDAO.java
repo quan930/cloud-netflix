@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * 订单 data jpa
  */
 @Repository
-public interface OrderDAO extends JpaRepository<Order,String> {
+public interface OrderDAO extends JpaRepository<Order, String> {
 }

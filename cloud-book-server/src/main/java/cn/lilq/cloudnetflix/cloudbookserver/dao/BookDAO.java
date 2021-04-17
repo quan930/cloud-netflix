@@ -15,27 +15,29 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Repository
-public interface BookDAO extends JpaRepository<Book,String> {
+public interface BookDAO extends JpaRepository<Book, String> {
     /**
      * 减少 指定商品库存
+     *
      * @param number 要减少的数量
-     * @param id 商品id
+     * @param id     商品id
      * @return 修改后的book
      */
     @Transactional
     @Modifying
     @Query("UPDATE Book o SET o.repertory = o.repertory - :number WHERE o.id= :id")
-    int updateRepertorySubtract(@Param("number")Integer number,@Param("id") String id);
+    int updateRepertorySubtract(@Param("number") Integer number, @Param("id") String id);
 
 
     /**
      * 增加 指定商品库存
+     *
      * @param number 要增加的数量
-     * @param id 商品id
+     * @param id     商品id
      * @return 修改后的book
      */
     @Transactional
     @Modifying
     @Query("UPDATE Book o SET o.repertory = o.repertory + :number WHERE o.id= :id")
-    int updateRepertoryAdd(@Param("number")Integer number,@Param("id") String id);
+    int updateRepertoryAdd(@Param("number") Integer number, @Param("id") String id);
 }

@@ -24,8 +24,8 @@ public class ShopListener {
     private OrderService orderService;
 
     @StreamListener(Sink.INPUT)
-    public void receive(Order order){
-        log.debug("ShopListener:receive("+order+")");
+    public void receive(Order order) {
+        log.debug("ShopListener:receive(" + order + ")");
         orderService.addOrder(order);
     }
 }

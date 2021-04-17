@@ -32,19 +32,19 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Response addBook(Book book) {
-        if (book.getId()!=null)
-            return new Response(400,"Id must be null",null);
-        if (book.getName()==null || book.getCategory()==null){
-            return new Response(400,"content is null",null);
+        if (book.getId() != null)
+            return new Response(400, "Id must be null", null);
+        if (book.getName() == null || book.getCategory() == null) {
+            return new Response(400, "content is null", null);
         }
-        if (book.getRepertory()==null){
+        if (book.getRepertory() == null) {
             book.setRepertory(0);
         }
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("bookDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
-            return new Response(200,"successful",BookTransformUtil.entityToPojo(bookDAO.save(BookTransformUtil.pojoToEntity(book))));
-        }finally {
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
+            return new Response(200, "successful", BookTransformUtil.entityToPojo(bookDAO.save(BookTransformUtil.pojoToEntity(book))));
+        } finally {
             newSpan.finish();
             log.debug("bookService:addBook()");
         }
@@ -54,14 +54,14 @@ public class BookServiceImpl implements BookService {
     public Response listBook() {
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("bookDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             List<Book> booksNew = new ArrayList<>();
             List<cn.lilq.cloudnetflix.cloudbookserver.entity.Book> books = bookDAO.findAll();
             books.forEach(book ->
                     booksNew.add(BookTransformUtil.entityToPojo(book))
             );
-            return new Response(200,"successful",booksNew);
-        }finally {
+            return new Response(200, "successful", booksNew);
+        } finally {
             newSpan.finish();
             log.debug("bookService:listBook()");
         }
@@ -69,16 +69,16 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Response findBookById(Book book) {
-        if (book.getId()==null)
-            return new Response(400,"id is null",null);
+        if (book.getId() == null)
+            return new Response(400, "id is null", null);
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("bookDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             return bookDAO.findById(book.getId())
                     .map(
-                            value -> new Response(200,"successful",BookTransformUtil.entityToPojo(value))
+                            value -> new Response(200, "successful", BookTransformUtil.entityToPojo(value))
                     ).orElseGet(() -> new Response(404, "person is not exist", null));
-        }finally {
+        } finally {
             newSpan.finish();
             log.debug("bookService:findBookById()");
         }
@@ -86,14 +86,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Response updateBook(Book book) {
-        if (book.getName()==null || book.getCategory()==null || book.getId()==null || book.getRepertory()==null){
-            return new Response(400,"content is null",null);
+        if (book.getName() == null || book.getCategory() == null || book.getId() == null || book.getRepertory() == null) {
+            return new Response(400, "content is null", null);
         }
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("bookDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
-            return new Response(200,"successful",BookTransformUtil.entityToPojo(bookDAO.save(BookTransformUtil.pojoToEntity(book))));
-        }finally {
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
+            return new Response(200, "successful", BookTransformUtil.entityToPojo(bookDAO.save(BookTransformUtil.pojoToEntity(book))));
+        } finally {
             newSpan.finish();
             log.debug("bookService:updateBook()");
         }
@@ -101,14 +101,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Response updateBookRepertory(Book book) {
-        if (book.getId()==null || book.getRepertory() == null)
-            return new Response(400,"content is null",null);
+        if (book.getId() == null || book.getRepertory() == null)
+            return new Response(400, "content is null", null);
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("bookDAO").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             int m = book.getRepertory() > 0 ? bookDAO.updateRepertoryAdd(book.getRepertory(), book.getId()) : bookDAO.updateRepertorySubtract(Math.abs(book.getRepertory()), book.getId());
             return m > 0 ? new Response(200, "successful", null) : new Response(400, "update error", null);
-        }finally {
+        } finally {
             newSpan.finish();
             log.debug("bookService:updateBookRepertory()");
         }

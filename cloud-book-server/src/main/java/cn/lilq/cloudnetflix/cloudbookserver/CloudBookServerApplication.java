@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Bean;
 @EnableBinding(Sink.class)
 public class CloudBookServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CloudBookServerApplication.class,args);
+        SpringApplication.run(CloudBookServerApplication.class, args);
     }
 
     @Bean

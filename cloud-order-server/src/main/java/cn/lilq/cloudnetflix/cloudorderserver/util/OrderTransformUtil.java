@@ -10,19 +10,21 @@ import cn.lilq.cloudnetflix.cloudapicom.pojo.Order;
 public class OrderTransformUtil {
     /**
      * 数据库对象转pojo对象
+     *
      * @param order entity order
      * @return pojo
      */
-    static public Order entityToPojo(cn.lilq.cloudnetflix.cloudorderserver.entity.Order order){
-        return  new Order(order.getId(),order.getUserId(),order.getGoodsId(),order.getDate());
+    static public Order entityToPojo(cn.lilq.cloudnetflix.cloudorderserver.entity.Order order) {
+        return new Order(order.getId(), order.getUserId(), order.getGoodsId(), order.getDate());
     }
 
     /**
      * pojo对象转数据库对象
+     *
      * @param order pojo对象
      * @return entity
      */
-    static public cn.lilq.cloudnetflix.cloudorderserver.entity.Order pojoToEntity(Order order){
-        return  new cn.lilq.cloudnetflix.cloudorderserver.entity.Order(order.getId(),order.getUserId(),order.getGoodsId(),order.getDate());
+    static public cn.lilq.cloudnetflix.cloudorderserver.entity.Order pojoToEntity(Order order) {
+        return new cn.lilq.cloudnetflix.cloudorderserver.entity.Order(order.getId(), order.getUserId(), order.getGoodsId(), order.getDate());
     }
 }

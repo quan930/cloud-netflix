@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Bean;
 @EnableBinding(Source.class)
 public class CloudShopServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CloudShopServerApplication.class,args);
+        SpringApplication.run(CloudShopServerApplication.class, args);
     }
 
     @Bean

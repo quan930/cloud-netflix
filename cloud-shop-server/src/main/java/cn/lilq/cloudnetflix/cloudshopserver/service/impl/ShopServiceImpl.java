@@ -28,16 +28,16 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Response sendShop(Order order) {
-        if (order==null)
-            return new Response(400,"order is null",null);
-        if (order.getGoodsId()==null || order.getUserId()==null)
-            return new Response(400,"content is null",null);
+        if (order == null)
+            return new Response(400, "order is null", null);
+        if (order.getGoodsId() == null || order.getUserId() == null)
+            return new Response(400, "content is null", null);
         //自定义跨度
         Span newSpan = tracer.nextSpan().name("Rabbit MQ").start();
-        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())){
+        try (Tracer.SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
             mySourceBean.publishOrderChange(order);
-            return new Response(200,"successful",null);
-        }finally {
+            return new Response(200, "successful", null);
+        } finally {
             newSpan.finish();
             log.debug("shopService:sendShop()");
         }

@@ -18,7 +18,7 @@ public class ShopListener {
     private static final Logger logger = LoggerFactory.getLogger(ShopListener.class);
 
     @StreamListener(Sink.INPUT)
-    public void receive(Order order){
-        logger.debug("order{}"+"userID"+order.getUserId()+"Goods ID"+order.getGoodsId());
+    public void receive(Order order) {
+        logger.debug("order{}" + "userID" + order.getUserId() + "Goods ID" + order.getGoodsId());
     }
 }

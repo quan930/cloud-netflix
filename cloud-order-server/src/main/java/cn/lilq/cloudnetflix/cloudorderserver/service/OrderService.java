@@ -11,6 +11,7 @@ import cn.lilq.cloudnetflix.cloudapicom.pojo.Response;
 public interface OrderService {
     /**
      * 增加订单
+     *
      * @param order 用户对象
      * @return response
      */
@@ -18,12 +19,14 @@ public interface OrderService {
 
     /**
      * 订单列表
-     * @return  Response data List<Order>
+     *
+     * @return Response data List<Order>
      */
     Response listOrder();
 
     /**
      * 根据id 查询订单
+     *
      * @param order 需要order id
      * @return Response data Order
      */
@@ -31,6 +34,7 @@ public interface OrderService {
 
     /**
      * 更新订单
+     *
      * @param order 需要更新的订单
      * @return Response data Order(更新后)
      */

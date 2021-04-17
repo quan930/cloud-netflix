@@ -21,12 +21,12 @@ public class MySourceBean {
     private static final Logger logger = LoggerFactory.getLogger(MySourceBean.class);
 
     @Autowired
-    public MySourceBean(Source source){
+    public MySourceBean(Source source) {
         this.source = source;
     }
 
-    public void publishOrderChange(Order order){
-        logger.debug("Sending RabbitMQ message {} for User Id , Goods Id: {}",order.getUserId(),order.getGoodsId());
+    public void publishOrderChange(Order order) {
+        logger.debug("Sending RabbitMQ message {} for User Id , Goods Id: {}", order.getUserId(), order.getGoodsId());
         source.output().send(MessageBuilder.withPayload(order).build());
     }
 }

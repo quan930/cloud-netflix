@@ -28,8 +28,8 @@ public class ShopListener {
     private static final Logger logger = LoggerFactory.getLogger(ShopListener.class);
 
     @StreamListener(Sink.INPUT)
-    public void receive(Order order){
-        log.debug("ShopListener:receive("+order+")");
-        bookService.updateBookRepertory(new Book(order.getGoodsId(), null,null,-1));
+    public void receive(Order order) {
+        log.debug("ShopListener:receive(" + order + ")");
+        bookService.updateBookRepertory(new Book(order.getGoodsId(), null, null, -1));
     }
 }

@@ -10,6 +10,7 @@ import cn.lilq.cloudnetflix.cloudapicom.pojo.Response;
 public interface PersonService {
     /**
      * 增加用户
+     *
      * @param person 用户对象
      * @return response
      */
@@ -17,12 +18,14 @@ public interface PersonService {
 
     /**
      * 用户列表
-     * @return  Response data List<Person>
+     *
+     * @return Response data List<Person>
      */
     Response listPerson();
 
     /**
      * 根据id 查询用户
+     *
      * @param person 需要person id
      * @return Response data Person
      */
@@ -30,6 +33,7 @@ public interface PersonService {
 
     /**
      * 更新用户
+     *
      * @param person 需要更新的用户
      * @return Response data Person(更新后)
      */
@@ -37,6 +41,7 @@ public interface PersonService {
 
     /**
      * 查询用户权限
+     *
      * @param person person 需要person id
      * @return Response data Integer(权限)
      */
